@@ -62,7 +62,7 @@ export const Contact = () => {
                 transition={{ duration: 0.6, ease: 'easeOut' }}
                 className="text-4xl sm:text-5xl font-medium tracking-tight text-primary/70 mb-8 text-center"
             >
-                Let's Build Something <span className="font-semibold text-primary">Great</span>
+                Let&apos;s Build Something <span className="font-semibold text-primary">Great</span>
             </motion.h2>
 
             <motion.p
