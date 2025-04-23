@@ -11,6 +11,7 @@ import Turbopack from "@/images/icons/turbopack.svg"
 import Typescript from "@/images/icons/typescript.svg"
 import Vercel from "@/images/icons/vercel.svg"
 import Neon from "@/images/icons/neondb.svg"
+import { motion } from "framer-motion";
 
 const tools = [
     { name: "Next.js", icon: Nextjs },
@@ -31,13 +32,16 @@ export const TechStack = () => {
             <h2 className="text-3xl font-semibold tracking-tight text-white mb-10">My Essential Stack</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                 {tools.map((tool) => (
-                    <div
+                    <motion.div
                         key={tool.name}
-                        className="flex items-center justify-center border bg-zinc-900 rounded-xl gap-2 p-6 hover:bg-zinc-800 transition"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.96 }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                        className="flex items-center justify-center border bg-zinc-900 rounded-xl gap-2 p-6 hover:bg-zinc-800 transition-colors"
                     >
                         <Image src={tool.icon} alt={tool.name} width={24} height={24} draggable={false} className="size-6" />
                         <span className="text-base font-medium text-primary">{tool.name}</span>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
             <p className="text-lg text-muted-foreground mt-6 text-center italic"><span className="text-primary font-medium">+</span> Framer Motion, GSAP, tailwindcss-animate, etc.</p>
