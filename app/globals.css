@@ -1,8 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-* {
-  cursor: none !important;
+@media (min-width: 48rem) {
+  * {
+    cursor: none !important;
+  }
 }
 
 @theme inline {
