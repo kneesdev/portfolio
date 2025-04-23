@@ -1,7 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Twitter } from 'lucide-react'
+import { Linkedin } from 'lucide-react'
+import { SiGithub, SiX } from '@icons-pack/react-simple-icons';
+import { Button } from '@/components/ui/button';
 
 export function Footer() {
     return (
@@ -12,7 +14,7 @@ export function Footer() {
                     <div className="text-sm text-primary/70">Full-stack Developer</div>
                 </div>
 
-                <div className="flex gap-4 text-xl text-primary/70">
+                <div className="flex gap-2 text-primary/70">
                     <motion.a
                         href="https://github.com/kneesdev"
                         target="_blank"
@@ -20,9 +22,11 @@ export function Footer() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.9 }}
                         transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-                        className="hover:text-primary transition"
+                        className="hover:text-primary transition-colors"
                     >
-                        <Github />
+                        <Button size="icon" variant="outline">
+                            <SiGithub />
+                        </Button>
                     </motion.a>
                     <motion.a
                         href="https://linkedin.com/in/kneesdev"
@@ -31,9 +35,11 @@ export function Footer() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.9 }}
                         transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-                        className="hover:text-primary transition"
+                        className="hover:text-primary transition-colors"
                     >
-                        <Linkedin />
+                        <Button size="icon" variant="outline">
+                            <Linkedin />
+                        </Button>
                     </motion.a>
                     <motion.a
                         href="https://x.com/wvzyx_"
@@ -42,9 +48,11 @@ export function Footer() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.9 }}
                         transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-                        className="hover:text-primary transition"
+                        className="hover:text-primary transition-colors"
                     >
-                        <Twitter />
+                        <Button size="icon" variant="outline">
+                            <SiX />
+                        </Button>
                     </motion.a>
                 </div>
             </div>
