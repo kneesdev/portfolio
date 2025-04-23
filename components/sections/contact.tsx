@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
 
 const contactSchema = z.object({
     name: z.string().min(2, "Name is required"),
@@ -79,12 +80,15 @@ export const Contact = () => {
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.6, ease: 'easeOut' }}
-                    className="text-center space-y-6"
                 >
-                    <div className="inline-flex items-center justify-center size-16 bg-green-950 rounded-full text-white">
-                        <CheckCircleIcon className="size-8 text-green-600" />
-                    </div>
-                    <p className="text-muted-foreground"><span className="font-medium text-primary">Thank you for reaching out!</span> I will get back to you as soon as I decide to open my inbox.</p>
+                    <Card className="bg-zinc-900/50 border">
+                        <CardContent className="py-2 text-center space-y-6">
+                            <div className="inline-flex items-center justify-center size-16 bg-green-950 rounded-full text-white">
+                                <CheckCircleIcon className="size-8 text-green-600" />
+                            </div>
+                            <p className="text-muted-foreground"><span className="font-medium text-primary">Thank you for reaching out!</span><br />I will get back to you as soon as I decide to open my inbox.</p>
+                        </CardContent>
+                    </Card>
                 </motion.div>
             ) : (
                 <motion.form
@@ -92,44 +96,47 @@ export const Contact = () => {
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.6, ease: 'easeOut' }}
-                    className="space-y-6"
                 >
-                    <div>
-                        <Label htmlFor="name" className="mb-2 text-sm font-medium text-white">Name</Label>
-                        <Input placeholder="John Doe" {...register("name")} />
-                        {errors.name && <p className="text-destructive text-sm mt-2">{errors.name.message}</p>}
-                    </div>
-                    <div>
-                        <Label htmlFor="name" className="mb-2 text-sm font-medium text-white">Email address</Label>
-                        <Input type="email" placeholder="me@domain.com" {...register("email")} />
-                        {errors.email && <p className="text-destructive text-sm mt-2">{errors.email.message}</p>}
-                    </div>
-                    <div>
-                        <Label htmlFor="name" className="mb-2 text-sm font-medium text-white">Message</Label>
-                        <Textarea rows={6} {...register("message")} />
-                        {errors.message && <p className="text-destructive text-sm mt-2">{errors.message.message}</p>}
-                    </div>
-                    <div className="pt-2 text-center">
-                        <motion.div
-                            className="w-fit mx-auto"
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.96 }}
-                            transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-                        >
-                            <Button
-                                type="submit"
-                                disabled={isSubmitting}
-                            >
-                                {isSubmitting ? (
-                                    <div className="flex justify-center items-center">
-                                        <Spinner size="sm" className="bg-black mr-2" /> Hold tight...
-                                    </div>
-                                ) : (
-                                    "Submit message"
-                                )}
-                            </Button>
-                        </motion.div>
-                    </div>
+                    <Card className="bg-zinc-900/50 border">
+                        <CardContent className="py-2 space-y-6">
+                            <div>
+                                <Label htmlFor="name" className="mb-2 text-sm font-medium text-white">Name</Label>
+                                <Input placeholder="John Doe" {...register("name")} />
+                                {errors.name && <p className="text-destructive text-sm mt-2">{errors.name.message}</p>}
+                            </div>
+                            <div>
+                                <Label htmlFor="name" className="mb-2 text-sm font-medium text-white">Email address</Label>
+                                <Input type="email" placeholder="me@domain.com" {...register("email")} />
+                                {errors.email && <p className="text-destructive text-sm mt-2">{errors.email.message}</p>}
+                            </div>
+                            <div>
+                                <Label htmlFor="name" className="mb-2 text-sm font-medium text-white">Message</Label>
+                                <Textarea rows={6} {...register("message")} />
+                                {errors.message && <p className="text-destructive text-sm mt-2">{errors.message.message}</p>}
+                            </div>
+                            <div className="pt-2 text-center">
+                                <motion.div
+                                    className="w-fit mx-auto"
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.96 }}
+                                    transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                                >
+                                    <Button
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                    >
+                                        {isSubmitting ? (
+                                            <div className="flex justify-center items-center">
+                                                <Spinner size="sm" className="bg-black mr-2" /> Hold tight...
+                                            </div>
+                                        ) : (
+                                            "Submit message"
+                                        )}
+                                    </Button>
+                                </motion.div>
+                            </div>
+                        </CardContent>
+                    </Card>
                 </motion.form>
             )}
 
