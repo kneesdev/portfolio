@@ -12,6 +12,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { MagicCard } from "@/components/ui/magic-card";
 
 const contactSchema = z.object({
     name: z.string().min(2, "Name is required"),
@@ -81,14 +82,19 @@ export const Contact = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.6, ease: 'easeOut' }}
                 >
-                    <Card className="bg-zinc-900/50 border">
+                    <MagicCard
+                        gradientColor="#262626"
+                        gradientFrom="#22c55e"
+                        gradientTo="#16a34a"
+                        className="border rounded-xl py-6"
+                    >
                         <CardContent className="py-2 text-center space-y-6">
                             <div className="inline-flex items-center justify-center size-16 bg-green-950 rounded-full text-white">
                                 <CheckCircleIcon className="size-8 text-green-600" />
                             </div>
                             <p className="text-muted-foreground"><span className="font-medium text-primary">Thank you for reaching out!</span><br />I will get back to you as soon as I decide to open my inbox.</p>
                         </CardContent>
-                    </Card>
+                    </MagicCard>
                 </motion.div>
             ) : (
                 <motion.form
@@ -97,7 +103,12 @@ export const Contact = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.6, ease: 'easeOut' }}
                 >
-                    <Card className="bg-zinc-900/50 border">
+                    <MagicCard
+                        gradientColor="#262626"
+                        gradientFrom="#2563eb"
+                        gradientTo="#3b82f6"
+                        className="border rounded-xl py-6"
+                    >
                         <CardContent className="py-2 space-y-6">
                             <div>
                                 <Label htmlFor="name" className="mb-2 text-sm font-medium text-white">Name</Label>
@@ -136,7 +147,7 @@ export const Contact = () => {
                                 </motion.div>
                             </div>
                         </CardContent>
-                    </Card>
+                    </MagicCard>
                 </motion.form>
             )}
 
