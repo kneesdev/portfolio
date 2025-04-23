@@ -110,18 +110,25 @@ export const Contact = () => {
                         {errors.message && <p className="text-destructive text-sm mt-2">{errors.message.message}</p>}
                     </div>
                     <div className="pt-2 text-center">
-                        <Button
-                            type="submit"
-                            disabled={isSubmitting}
+                        <motion.div
+                            className="w-fit mx-auto"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.96 }}
+                            transition={{ type: 'spring', stiffness: 300, damping: 15 }}
                         >
-                            {isSubmitting ? (
-                                <div className="flex justify-center items-center">
-                                    <Spinner size="sm" className="bg-black mr-2" /> Hold tight...
-                                </div>
-                            ) : (
-                                "Submit message"
-                            )}
-                        </Button>
+                            <Button
+                                type="submit"
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? (
+                                    <div className="flex justify-center items-center">
+                                        <Spinner size="sm" className="bg-black mr-2" /> Hold tight...
+                                    </div>
+                                ) : (
+                                    "Submit message"
+                                )}
+                            </Button>
+                        </motion.div>
                     </div>
                 </motion.form>
             )}
