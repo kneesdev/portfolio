@@ -198,8 +198,8 @@ export default function SmoothCursor({
       animate={{ scale: 1 }}
       transition={{
         type: "spring",
-        stiffness: 400,
-        damping: 30,
+        stiffness: 700,
+        damping: 20,
       }}
     >
       {cursor}
