@@ -8,6 +8,12 @@ interface Position {
   y: number;
 }
 
+interface Ripple {
+  id: number;
+  x: number;
+  y: number;
+}
+
 export interface SmoothCursorProps {
   cursor?: JSX.Element;
   springConfig?: {
@@ -77,8 +83,29 @@ const DefaultCursorSVG: FC = () => {
         </filter>
       </defs>
     </svg>
+  )
+}
+
+const ClickRipple: FC<{ ripple: Ripple; onComplete: (id: number) => void }> = ({ ripple, onComplete }) => {
+  return (
+    <motion.div
+      className="absolute pointer-events-none z-[100]"
+      style={{
+        left: ripple.x - 25,
+        top: ripple.y - 25,
+      }}
+      initial={{ scale: 0, opacity: 0.8 }}
+      animate={{ scale: 3, opacity: 0 }}
+      transition={{
+        duration: 0.6,
+        ease: "easeOut",
+      }}
+      onAnimationComplete={() => onComplete(ripple.id)}
+    >
+      <div className="w-12 h-12 border-2 border-primary/30 rounded-full" />
+    </motion.div>
   );
-};
+}
 
 export default function SmoothCursor({
   cursor = <DefaultCursorSVG />,
@@ -90,11 +117,13 @@ export default function SmoothCursor({
   },
 }: SmoothCursorProps) {
   const [isMoving, setIsMoving] = useState(false);
+  const [ripples, setRipples] = useState<Ripple[]>([]);
   const lastMousePos = useRef<Position>({ x: 0, y: 0 });
   const velocity = useRef<Position>({ x: 0, y: 0 });
   const lastUpdateTime = useRef(Date.now());
   const previousAngle = useRef(0);
   const accumulatedRotation = useRef(0);
+  const rippleId = useRef(0);
 
   const cursorX = useSpring(0, springConfig);
   const cursorY = useSpring(0, springConfig);
@@ -108,6 +137,19 @@ export default function SmoothCursor({
     stiffness: 500,
     damping: 35,
   });
+
+  const addRipple = (x: number, y: number) => {
+    const newRipple: Ripple = {
+      id: rippleId.current++,
+      x,
+      y,
+    };
+    setRipples((prev) => [...prev, newRipple]);
+  };
+
+  const removeRipple = (id: number) => {
+    setRipples((prev) => prev.filter((ripple) => ripple.id !== id));
+  };
 
   useEffect(() => {
     const updateVelocity = (currentPos: Position) => {
@@ -160,6 +202,15 @@ export default function SmoothCursor({
       }
     };
 
+    const handleMouseDown = (e: MouseEvent) => {
+      addRipple(e.clientX, e.clientY);
+      scale.set(0.8);
+    };
+
+    const handleMouseUp = () => {
+      scale.set(1);
+    };
+
     let rafId: number;
     const throttledMouseMove = (e: MouseEvent) => {
       if (rafId) return;
@@ -172,38 +223,47 @@ export default function SmoothCursor({
 
     document.body.style.cursor = "none";
     window.addEventListener("mousemove", throttledMouseMove);
+    window.addEventListener("mousedown", handleMouseDown);
+    window.addEventListener("mouseup", handleMouseUp);
 
     return () => {
       window.removeEventListener("mousemove", throttledMouseMove);
+      window.removeEventListener("mousedown", handleMouseDown);
+      window.removeEventListener("mouseup", handleMouseUp);
       document.body.style.cursor = "auto";
       if (rafId) cancelAnimationFrame(rafId);
     };
   }, [cursorX, cursorY, rotation, scale]);
 
   return (
-    <motion.div
-      className="hidden md:block"
-      style={{
-        position: "fixed",
-        left: cursorX,
-        top: cursorY,
-        translateX: "-50%",
-        translateY: "-50%",
-        rotate: rotation,
-        scale: scale,
-        zIndex: 100,
-        pointerEvents: "none",
-        willChange: "transform",
-      }}
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{
-        type: "spring",
-        stiffness: 700,
-        damping: 20,
-      }}
-    >
-      {cursor}
-    </motion.div>
+    <>
+      {ripples.map((ripple) => (
+        <ClickRipple key={ripple.id} ripple={ripple} onComplete={removeRipple} />
+      ))}
+      <motion.div
+        className="hidden md:block"
+        style={{
+          position: "fixed",
+          left: cursorX,
+          top: cursorY,
+          translateX: "-50%",
+          translateY: "-50%",
+          rotate: rotation,
+          scale: scale,
+          zIndex: 100,
+          pointerEvents: "none",
+          willChange: "transform",
+        }}
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 700,
+          damping: 20,
+        }}
+      >
+        {cursor}
+      </motion.div>
+    </>
   );
 }
