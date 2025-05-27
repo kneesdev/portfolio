@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Linkedin } from 'lucide-react'
-import { SiGithub, SiX } from '@icons-pack/react-simple-icons';
+import { SiGithub, SiX, SiDiscord } from '@icons-pack/react-simple-icons';
 import { Button } from '@/components/ui/button';
 
 export function Footer() {
@@ -26,6 +26,20 @@ export function Footer() {
                     >
                         <Button size="icon" variant="outline">
                             <SiGithub />
+                        </Button>
+                    </motion.a>
+                    <motion.a
+                        // old id: 892038814921547898
+                        href="https://discord.com/users/305734491169882115"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.9 }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                        className="hover:text-primary transition-colors"
+                    >
+                        <Button size="icon" variant="outline">
+                            <SiDiscord />
                         </Button>
                     </motion.a>
                     <motion.a
