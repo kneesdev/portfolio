@@ -56,7 +56,7 @@ export function Footer() {
                         </Button>
                     </motion.a>
                     <motion.a
-                        href="https://x.com/wvzyx_"
+                        href="https://x.com/leesiure"
                         target="_blank"
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.05 }}
