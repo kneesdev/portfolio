@@ -1,5 +1,6 @@
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
+import { WorkExperience } from "@/components/sections/work-experience";
 import { TechStack } from "@/components/sections/tech-stack";
 import { Contact } from "@/components/sections/contact";
 
@@ -11,6 +12,7 @@ export default function Landing() {
         <Hero />
       </div>
       <About />
+      <WorkExperience />
       <TechStack />
       <Contact />
     </>
