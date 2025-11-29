@@ -16,7 +16,6 @@ const socials = [
     icon: SiDiscord,
     href: "https://discord.com/users/305734491169882115",
   },
-  { label: "email", href: "mailto:hello@lee.is-a.dev" },
 ];
 
 export function Footer() {
