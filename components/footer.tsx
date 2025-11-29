@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { ExternalLink } from "./external-link";
 import {
   SiGithub,
@@ -19,12 +20,32 @@ const socials = [
 ];
 
 export function Footer() {
+  const [showEmail, setShowEmail] = useState(false);
+
   return (
     <footer id="contact" className="pt-8 border-t border-border">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
         <div>
           <h2 className="font-medium mb-1">get in touch</h2>
-          <p className="text-sm text-muted-foreground">let&apos;s chat :)</p>
+          <p className="flex gap-1 items-center text-sm text-muted-foreground">
+            let&apos;s chat :)
+            <button
+              onClick={() => setShowEmail((x) => !x)}
+              className="cursor-pointer underline decoration-dashed hover:text-foreground"
+            >
+              why is there no email?
+            </button>
+          </p>
+          {showEmail && (
+            <p className="mt-2 text-xs text-muted-foreground leading-relaxed max-w-md">
+              email is too asynchronous and i rarely check my inbox, so socials
+              end up being faster for both of us. but if you really need it,
+              it&apos;s{" "}
+              <ExternalLink href="mailto:kneesdev@naver.com">
+                kneesdev@naver.com
+              </ExternalLink>
+            </p>
+          )}
         </div>
         <div className="flex gap-3 text-sm">
           {socials.map((social) => {
