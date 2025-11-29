@@ -34,19 +34,22 @@ const projects = [
   {
     name: "Duels+",
     description: "maintaining the launcher, api, backend services, and website",
+    period: "2025 - present",
     href: "https://duelsplus.com",
-  },
-  {
-    name: "Lunar Client Archive",
-    description: "archived installers of the launcher",
-    tags: ["Unmaintained"],
-    href: "https://github.com/kneesdev/LunarClientArchive",
   },
   {
     name: "discord-activity-nextjs",
     description: "minimal next.js boilerplate for building discord activities",
     tags: ["Unmaintained"],
+    period: "2025",
     href: "https://github.com/kneesdev/discord-activity-nextjs",
+  },
+  {
+    name: "Lunar Client Archive",
+    description: "archived installers of the launcher",
+    tags: ["Unmaintained"],
+    period: "2024",
+    href: "https://github.com/kneesdev/LunarClientArchive",
   },
 ];
 
@@ -186,7 +189,12 @@ export default function Home() {
             {stack.map((tech) => {
               const Icon = tech.icon;
               return (
-                <ExternalLink key={tech.name} href={tech.href} className="" hideArrow>
+                <ExternalLink
+                  key={tech.name}
+                  href={tech.href}
+                  className=""
+                  hideArrow
+                >
                   <span
                     key={tech.name}
                     className="flex items-center gap-2 px-3 py-1.5 text-sm border border-border rounded-full hover:border-accent text-muted-foreground"
