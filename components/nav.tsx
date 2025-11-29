@@ -1,16 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./theme-toggle";
 
 const links = [
-  { href: "#about", label: "about" },
-  { href: "#work", label: "work" },
-  { href: "#projects", label: "projects" },
-  { href: "#writing", label: "writing" },
+  { href: "/", label: "home" },
+  //{ href: "/writing", label: "writing" },
 ];
 
 export function Nav() {
+  const pathname = usePathname();
+
   return (
     <div className="sticky top-0 z-50">
       <nav className="bg-primary-foreground dark:bg-card mx-auto max-w-3xl z-50">
@@ -22,19 +23,30 @@ export function Nav() {
             </Link>
           </div>
           <span className="text-muted-foreground/50">/</span>
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-muted-foreground hover:text-foreground hover:underline hover:decoration-dashed"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {links.map((link) => {
+            const active =
+              link.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(link.href);
+
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={
+                  active
+                    ? "text-foreground underline decoration-dashed"
+                    : "text-muted-foreground hover:text-foreground hover:underline hover:decoration-dashed"
+                }
+              >
+                {link.label}
+              </Link>
+            );
+          })}
           <div className="flex items-center gap-3 ml-auto">
             {/* just in case i wanna add more stuff */}
             <Link
-              href="#contact"
+              href="/#contact"
               className="text-muted-foreground hover:text-foreground hover:underline hover:decoration-dashed"
             >
               contact
