@@ -15,6 +15,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon-sm"
       className="text-muted-foreground hover:text-foreground"
+      aria-label="Loading"
     >
       <Spinner className="animate-spin" />
     </Button>
@@ -27,6 +28,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon-sm"
       className="text-muted-foreground hover:text-foreground"
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
       onClick={() => setTheme(isDark ? "light" : "dark")}
     >
       {isDark ? <SunIcon /> : <MoonIcon />}
