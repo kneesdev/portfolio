@@ -48,6 +48,12 @@ export async function generateMetadata(props: Params): Promise<Metadata> {
 
   return {
     title,
+    twitter: {
+      title: `${post.title}`,
+    },
+    openGraph: {
+      title: `${post.title}`,
+    },
   };
 }
 
