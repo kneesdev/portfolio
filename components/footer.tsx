@@ -25,7 +25,7 @@ export function Footer() {
 
   return (
     <footer id="contact" className="pt-8 border-t border-border">
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+      <div className="flex items-start justify-between gap-6">
         <div className="flex flex-col items-start gap-2">
           <div className="flex gap-3 text-sm">
             {socials.map((social) => {
