@@ -16,6 +16,29 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "hello, i'm lee!",
   description: "a full-stack dev's portfolio",
+  twitter: {
+    card: "summary_large_image",
+    title: "hello, i'm lee!",
+    description: "a full-stack dev's portfolio",
+    images: [
+      {
+        url: "https://lee.is-a.dev/og/image.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  openGraph: {
+    title: "hello, i'm lee!",
+    description: "a full-stack dev's portfolio",
+    images: [
+      {
+        url: "https://lee.is-a.dev/og/image.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
