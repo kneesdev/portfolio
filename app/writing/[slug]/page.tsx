@@ -1,5 +1,3 @@
-import { Nav } from "@/components/nav";
-import { Footer } from "@/components/footer";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug, getPostDate } from "@/lib/posts";
