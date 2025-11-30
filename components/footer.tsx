@@ -54,7 +54,9 @@ export function Footer() {
             </p>
           )}
         </div>
-        <Signature className="w-16 opacity-60" />
+        <div className="flex-shrink-0">
+          <Signature className="w-16 opacity-60" />
+        </div>
       </div>
       <p className="text-xs text-muted-foreground mt-12 flex items-center gap-1">
         © {new Date().getFullYear()} lee. built with{" "}
