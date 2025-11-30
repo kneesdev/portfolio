@@ -42,7 +42,7 @@ export function Project({
               {tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs text-muted-foreground bg-border dark:bg-muted px-2 py-0.5 rounded"
+                  className="text-xs text-foreground dark:text-muted-foreground bg-border dark:bg-muted px-2 py-0.5 rounded"
                 >
                   {tag}
                 </span>
