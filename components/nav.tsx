@@ -11,6 +11,7 @@ const links = [
 
 export function Nav() {
   const pathname = usePathname();
+  const isPost = pathname.startsWith("/writing/") && pathname !== "/writing";
 
   return (
     <div className="sticky top-0 z-50">
@@ -28,6 +29,8 @@ export function Nav() {
               link.href === "/"
                 ? pathname === "/"
                 : pathname.startsWith(link.href);
+            const label =
+              link.href === "/writing" && isPost ? "post" : link.label;
 
             return (
               <Link
@@ -39,7 +42,7 @@ export function Nav() {
                     : "text-muted-foreground hover:text-foreground hover:underline hover:decoration-dashed"
                 }
               >
-                {link.label}
+                {label}
               </Link>
             );
           })}
