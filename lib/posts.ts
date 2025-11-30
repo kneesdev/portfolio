@@ -15,7 +15,7 @@ export function getPostDate(dateString: string): string {
     year: "numeric",
     month: "long",
     day: "numeric",
-  }).format(date);
+  }).format(date).toLowerCase();
 }
 
 export function getPostBySlug(slug: string) {
