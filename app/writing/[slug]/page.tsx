@@ -16,26 +16,19 @@ export default async function Post(props: Params) {
   const content = await markdownToHtml(post.content || "");
 
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background">
-      <Nav />
+    <>
+      <header className="mb-20 md:mb-28">
+        <h1 className="text-3xl font-medium mb-4">{post.title}</h1>
+        <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
+          {getPostDate(post.date)}
+        </p>
+      </header>
 
-      {/* questionable color choices, i know x3 */}
-      <main className="bg-primary-foreground dark:bg-card mx-auto max-w-3xl px-6 py-16 md:py-24">
-        <header className="mb-20 md:mb-28">
-          <h1 className="text-3xl font-medium mb-4">{post.title}</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
-            {getPostDate(post.date)}
-          </p>
-        </header>
-
-        <article
-          className="mb-20 md:mb-28 max-w-none prose prose-zinc dark:prose-invert"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
-
-        <Footer />
-      </main>
-    </div>
+      <article
+        className="mb-20 md:mb-28 max-w-none prose prose-zinc dark:prose-invert"
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
+    </>
   );
 }
 
