@@ -1,7 +1,6 @@
 ---
 title: "how i cut duels+ launcher startup time on linux from >10s to ~4s"
 date: "2025-11-30"
-slug: "duels-plus-launcher-speed"
 ---
 
 so the duels+ launcher on linux was taking **over 10 seconds** to start when built. starting it unpackaged, however, wasn't bad at all. the main window launched within a few seconds, which is what made this issue so frustrating. everything worked fine until i packaged it and tried to run it as an end user.
