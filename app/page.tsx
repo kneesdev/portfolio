@@ -19,6 +19,8 @@ import {
 } from "@icons-pack/react-simple-icons";
 import { ExternalLink } from "@/components/external-link";
 
+import { getAllPosts, getPostDate } from "@/lib/posts";
+
 const work = [
   {
     company: "Secton",
@@ -53,15 +55,6 @@ const projects = [
   },
 ];
 
-const writing = [
-  {
-    title: "",
-    description: "",
-    date: "",
-    href: "",
-  },
-];
-
 const stack = [
   {
     name: "TypeScript",
@@ -83,6 +76,8 @@ const stack = [
 ];
 
 export default function Home() {
+  const posts = getAllPosts();
+
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background">
       <Nav />
@@ -148,36 +143,29 @@ export default function Home() {
         <Section id="writing" title="writing">
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <p>
-              i&apos;ve been meaning to start occasionally writing about things
-              i learn. mostly so i don&apos;t forget them, but also because
-              explaining something is the best way to find out if you actually
-              understand it.
-            </p>
-            <p>
-              if i ever decide to write about something, it&apos;ll appear here.
+              i occasionally write about things i learn. mostly so i don&apos;t
+              forget them, but also because explaining something is the best way
+              to find out if you actually understand it.
             </p>
           </div>
-          {/*<div className="space-y-6 mt-8">
-            {writing.map((article) => (
+          <div className="space-y-6 mt-8">
+            {posts.map((post) => (
               <a
-                key={article.title}
-                href={article.href}
+                key={post.title}
+                href={`/writing/${post.slug}`}
                 className="group block py-2"
               >
-                <div className="flex items-baseline justify-between gap-4 mb-1">
+                <div className="flex items-baseline justify-between gap-4">
                   <h3 className="font-medium group-hover:text-muted-foreground">
-                    {article.title}
+                    {post.title}
                   </h3>
                   <span className="text-sm text-muted-foreground font-mono shrink-0">
-                    {article.date}
+                    {getPostDate(post.date)}
                   </span>
                 </div>
-                <p className="text-sm text-muted-foreground">
-                  {article.description}
-                </p>
               </a>
             ))}
-          </div>*/}
+          </div>
         </Section>
 
         <Section title="stack">
