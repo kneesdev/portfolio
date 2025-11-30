@@ -14,7 +14,7 @@ export function Nav() {
 
   return (
     <div className="sticky top-0 z-50">
-      <nav className="bg-primary-foreground dark:bg-card mx-auto max-w-3xl z-50">
+      <nav className="bg-background mx-auto max-w-3xl z-50">
         <div className="mx-auto max-w-3xl pl-3 pr-6 py-4 flex items-center gap-6 text-sm">
           <div className="flex items-center gap-3">
             <ThemeToggle />
@@ -55,7 +55,7 @@ export function Nav() {
         </div>
       </nav>
 
-      <div className="pointer-events-none mx-auto max-w-3xl absolute inset-x-0 top-16 h-10 bg-gradient-to-b from-primary-foreground/70 dark:from-card/70 to-transparent" />
+      <div className="pointer-events-none mx-auto max-w-3xl absolute inset-x-0 top-16 h-10 bg-gradient-to-b from-background/70 to-transparent" />
     </div>
   );
 }

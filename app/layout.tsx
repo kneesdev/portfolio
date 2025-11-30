@@ -62,7 +62,7 @@ export default function RootLayout({
           <Nav />
 
           {/* questionable color choices, i know */}
-          <main className="bg-primary-foreground dark:bg-card mx-auto max-w-3xl px-6 py-16 md:py-24">
+          <main className="mx-auto max-w-3xl px-6 py-16 md:py-24">
             {children}
             <Footer />
           </main>
