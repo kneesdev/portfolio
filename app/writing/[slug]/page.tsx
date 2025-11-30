@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Link from "next/link";
+import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { getAllPosts, getPostBySlug, getPostDate } from "@/lib/posts";
 import markdownToHtml from "@/lib/markdownToHtml";
 
@@ -15,6 +17,13 @@ export default async function Post(props: Params) {
 
   return (
     <>
+      <Link
+        href="/writing"
+        className="flex gap-2 items-center text-sm font-medium font-mono text-foreground mb-8 tracking-wide hover:underline hover:decoration-dashed"
+      >
+        <ArrowLeftIcon /> return to writing
+      </Link>
+
       <header className="mb-20 md:mb-28">
         <h1 className="text-3xl font-medium mb-4">{post.title}</h1>
         <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
