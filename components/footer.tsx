@@ -7,6 +7,7 @@ import {
   SiGithub,
   SiX,
   SiDiscord,
+  SiKofi,
   SiNextdotjs,
 } from "@icons-pack/react-simple-icons";
 
@@ -17,6 +18,11 @@ const socials = [
     label: "discord",
     icon: SiDiscord,
     href: "https://discord.com/users/305734491169882115",
+  },
+  {
+    label: "ko-fi",
+    icon: SiKofi,
+    href: "https://ko-fi.com/wyzux",
   },
 ];
 
