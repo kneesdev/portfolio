@@ -32,7 +32,7 @@ export default async function Post(props: Params) {
       </header>
 
       <article
-        className="mb-20 md:mb-28 max-w-none prose prose-zinc prose-img:rounded-lg prose-img:pointer-events-none dark:prose-invert"
+        className="mb-20 md:mb-28 max-w-none prose prose-zinc prose-img:rounded-lg prose-img:pointer-events-none dark:prose-invert prose-p:text-muted-foreground"
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </>
