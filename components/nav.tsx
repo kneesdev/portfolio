@@ -38,8 +38,8 @@ export function Nav() {
                 href={link.href}
                 className={
                   active
-                    ? "text-foreground underline decoration-dashed"
-                    : "text-muted-foreground hover:text-foreground hover:underline hover:decoration-dashed"
+                    ? "text-foreground hover:underline hover:decoration-dashed"
+                    : "text-muted-foreground hover:text-foreground underline decoration-dashed"
                 }
               >
                 {label}
